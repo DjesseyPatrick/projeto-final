@@ -1,0 +1,39 @@
+<form action="">
+    <img src="assets/img/comida.webp" alt="">
+
+
+
+
+    <input type="text" placeholder="Nome" Class="form-control" name="nome" [(ngModel)]="comida.nome">
+    <input type="number" placeholder="Preço" Class="form-control" name="preco" [(ngModel)]="comida.preco">
+    <input type="number" placeholder="Quantidade" Class="form-control" name="quantidade"
+        [(ngModel)]="comida.quantidade">
+
+    <input type="button" *ngIf="btnCadastro" value="Cadastrar" class="btn btn-primary" (click)="cadastrar()">
+    <input type="button" *ngIf="!btnCadastro" value="Alterar" class="btn btn-warning" (click)="editar()">
+    <input type="button" *ngIf="!btnCadastro" value="Remover" class="btn btn-danger" (click)="remover()">
+    <input type="button" *ngIf="!btnCadastro" value="Cancelar" class="btn btn-secondary" (click)="cancelar()">
+</form>
+
+<table class="table" *ngIf="tabela">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comida of comidas; index as i">
+            <td>{{comida.id}}</td>
+            <td>{{comida.nome}}</td>
+            <td>{{comida.preco}}</td>
+            <td>{{comida.quantidade}}</td>
+            <td>
+                <button class="btn btn-success" (click)="selecionarComida(i)">Selecionar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
